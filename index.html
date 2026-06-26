@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLANK ❤️</title>
+<title>Charlotte ❤️</title>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -21,7 +21,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
@@ -72,7 +72,7 @@ body {
   z-index: 10;
 }
 
-/* 方案 A 防禦性優化：通行證頁面允許滾動，避免內容長時按鈕被擠出 */
+/* Ticket page scroll config */
 #p6 {
   max-height: 90vh;
   overflow-y: auto;
@@ -81,7 +81,6 @@ body {
   flex-direction: column;
 }
 
-/* 隱藏捲軸但保有功能（讓卡片看起來更像獨立 App） */
 #p6::-webkit-scrollbar {
   width: 4px;
 }
@@ -172,7 +171,7 @@ input[type="date"] {
 }
 
 input[type="date"]::before {
-  content: "請選擇日期 📅";
+  content: "Select Date 📅";
   position: absolute;
   left: 18px;
   top: 0;
@@ -265,9 +264,22 @@ button {
   will-change: left, top;
 }
 
+/* DOWNLOAD BUTTON DESIGN UPDATE */
+.download-btn {
+  width: 140px !important;
+  margin: 15px auto 0 auto !important;
+  background: #4a3e43 !important;
+  color: white !important;
+  box-shadow: 0 6px 15px rgba(74, 62, 67, 0.2);
+}
+
+.download-btn:hover {
+  background: #33272c !important;
+}
+
 @media (max-width: 768px) {
   .btn-group { max-width: 100%; }
-  #yesBtn, #noBtn { flex: 1 !important; width: auto !important; }
+  #yesBtn, #noBtn, .download-btn { flex: 1 !important; width: auto !important; }
   #noBtn { position: static !important; box-shadow: none; }
   #noPlaceholder { display: none !important; }
 }
@@ -302,13 +314,11 @@ button {
   100% { transform: translate3d(var(--x-move), var(--y-move), 0) scale(1.5) rotate(var(--rot)); opacity: 0; }
 }
 
-/* ========================================================
-    🎟️ EXCLUSIVE TICKETING DESIGN SYSTEM (P6)
-======================================================== */
+/* EXCLUSIVE TICKETING DESIGN SYSTEM (P6) */
 .ticket-wrapper {
   padding: 4px;
   background: transparent;
-  margin: 15px auto 20px auto;
+  margin: 15px auto 5px auto;
   width: 100%;
   max-width: 360px;
 }
@@ -323,7 +333,6 @@ button {
   text-align: left;
 }
 
-/* Ticket Header styling */
 .ticket-header {
   background: linear-gradient(135deg, #ff4f9b 0%, #ff7bb5 100%);
   padding: 16px;
@@ -343,7 +352,6 @@ button {
   text-transform: uppercase;
 }
 
-/* Ticket Body contents */
 .ticket-body {
   padding: 20px;
   position: relative;
@@ -363,15 +371,15 @@ button {
   gap: 4px;
 }
 
-/* 方案 A 核心修正：允許內容文字自動彈性換行，防止超長中英文撐爆通行證 */
 .ticket-value {
   font-size: 1.05rem;
   color: #33272c;
   font-weight: 700;
-  white-space: pre-wrap;       /* 保持空格換行 */
-  word-break: break-all;       /* 遇到長字串強制換行 */
+  white-space: pre-wrap;
+  word-break: break-all;
   line-height: 1.4;
   margin-top: 2px;
+  min-height: 1.4em;
 }
 
 /* FIXED IMAGE CONTAINER */
@@ -396,32 +404,18 @@ button {
   display: block;
 }
 
-/* Ticket Cut-Out Decorative Circles */
 .ticket-card::before, .ticket-card::after {
   content: '';
   position: absolute;
   width: 20px;
   height: 20px;
-  background: #ffd5eb; /* 與網頁底色自然融合 */
+  background: #ffd5eb;
   border-radius: 50%;
   top: 62px; 
   z-index: 5;
 }
 .ticket-card::before { left: -11px; box-shadow: inset -3px 0 5px rgba(0,0,0,0.03); }
 .ticket-card::after { right: -11px; box-shadow: inset 3px 0 5px rgba(0,0,0,0.03); }
-
-/* Download Action Button Styling */
-.download-btn {
-  width: 100% !important;
-  max-width: 240px;
-  margin: 5px auto 0 auto !important;
-  background: #4a3e43 !important;
-  color: white !important;
-  box-shadow: 0 6px 15px rgba(74, 62, 67, 0.2);
-}
-.download-btn:hover {
-  background: #33272c !important;
-}
 </style>
 </head>
 <body>
@@ -430,93 +424,99 @@ button {
 
 <div class="container">
   <div class="page active" id="p1">
-    <h1>BLANK 🫶</h1>
+    <h1>Charlotte 🫶</h1>
     <p class="desc" id="typing"></p>
     <div class="btn-group">
-      <button class="primary" id="yesBtn" onclick="start()">願意 ❤️</button>
+      <button class="primary" id="yesBtn" onclick="start()">Yes, I do! ❤️</button>
       <div style="width: 140px;" id="noPlaceholder"></div> 
     </div>
   </div>
 
   <div class="page" id="p2">
-    <h1>🫣 什麽？！</h1>
-    <p class="desc">哇哇哇 BLANK答應我了 好害羞 😳</p>
-    <button class="primary" onclick="show(3)">下一步 🥰</button>
+    <h1>🫣 Oh My Gosh!</h1>
+    <p class="desc">Wow wow wow, Charlotte said yes! I'm blushing so hard 😳</p>
+    <button class="primary" onclick="show(3)">Next 🥰</button>
   </div>
 
   <div class="page" id="p3">
-    <h1>📅 BLANK幾時得空呢？</h1>
+    <h1>📅 When are you free, Charlotte?</h1>
     <div class="datetime-wrapper">
       <input type="date" id="date" required>
       <select id="time">
-        <option value="">請選擇出發時間...</option>
+        <option value="">Select departure time...</option>
       </select>
     </div>
-    <button class="primary" onclick="validateStep3()">下一步 🥰</button>
+    <button class="primary" onclick="validateStep3()">Next 🥰</button>
   </div>
 
   <div class="page" id="p4">
-    <h1>🍜 BLANK想吃什麼呢？</h1>
+    <h1>🍜 What would you like to eat?</h1>
     <select id="food" onchange="toggleCustomInput('food', 'customFood')">
-      <option value="">請選擇專專屬美食...</option>
-      <option value="🍣 日本餐">日本餐 🍣</option>
-      <option value="🍲 海底撈">海底撈 🍲</option>
-      <option value="OTHER">其它... 📝</option>
+      <option value="">Select your exclusive menu...</option>
+      <option value="🍣 OMAKASE (Haha!)">OMAKASE (Haha!) 🍣</option>
+      <option value="🍔 McDonald's">McDonald's 🍔</option>
+      <option value="🍲 Haidilao Hotpot">Haidilao Hotpot 🍲</option>
+      <option value="🥗 c:ontent grain bowl">c:ontent grain bowl 🥗</option>
+      <option value="🍨 Bengong's Tea">Bengong's Tea 🍨</option>
+      <option value="OTHER">Something else... 📝</option>
     </select>
-    <input type="text" id="customFood" class="custom-input" placeholder="想吃什麼呢？ 😋">
-    <button class="primary" onclick="validateStep4()">下一步 🥰</button>
+    <input type="text" id="customFood" class="custom-input" placeholder="What are you craving? 😋">
+    <button class="primary" onclick="validateStep4()">Next 🥰</button>
   </div>
 
   <div class="page" id="p5">
-    <h1>🥰 BLANK飯後想去哪呢？</h1>
+    <h1>🥰 Where should we go after?</h1>
     <select id="act" onchange="toggleCustomInput('act', 'customAct')">
-      <option value="">請選擇浪漫行程...</option>
-      <option value="🎬 看電影">看電影 🎬</option>
-      <option value="🌳 散散步">散散步 🌳</option>
-      <option value="OTHER">其它... 📝</option>
+      <option value="">Select a romantic plan...</option>
+      <option value="🎬 Watch a romantic movie">Romantic Movie Date 🎬</option>
+      <option value="🌳 Take a peaceful walk holding hands">Walk Hand-in-Hand 🌳</option>
+      <option value="🏎️ Exciting Go-Karting session">Go-Kart Racing 🏎️</option>
+      <option value="⛳ Play some Golf">Play Golf ⛳</option>
+      <option value="🎡 Have fun at the Amusement Park">Amusement Park 🎡</option>
+      <option value="OTHER">Something else... 📝</option>
     </select>
-    <input type="text" id="customAct" class="custom-input" placeholder="想去哪裡玩？ 🚀">
-    <button class="primary" onclick="finish()">完成 🥰</button>
+    <input type="text" id="customAct" class="custom-input" placeholder="Where do you want to explore? 🚀">
+    <button class="primary" onclick="finish()">Finish 🥰</button>
   </div>
 
   <div class="page" id="p6">
-    <h1>預約成功 ❤️</h1>
+    <h1>Booking Successful ❤️ On my way to pick up Charlotte!</h1>
     
     <div class="ticket-wrapper">
       <div class="ticket-card" id="dateTicket">
         <div class="ticket-header">
-          <h2>專屬約會通行證</h2>
+          <h2>Exclusive Date Pass</h2>
           <p>🫶 EXCLUSIVE DATE PASS 🫶</p>
         </div>
         <div class="ticket-body">
           <div class="ticket-field">
-            <div class="ticket-label">📅 DATE / 日期</div>
+            <div class="ticket-label">📅 DATE</div>
             <div class="ticket-value" id="t-date"></div>
           </div>
           <div class="ticket-field">
-            <div class="ticket-label">⏰ TIME / 時間</div>
+            <div class="ticket-label">⏰ TIME</div>
             <div class="ticket-value" id="t-time"></div>
           </div>
           <div class="ticket-field">
-            <div class="ticket-label">🍜 DINING / 餐廳</div>
+            <div class="ticket-label">🍜 DINING</div>
             <div class="ticket-value" id="t-food"></div>
           </div>
           <div class="ticket-field">
-            <div class="ticket-label">✨ ACTIVITY / 行程</div>
+            <div class="ticket-label">✨ ACTIVITY</div>
             <div class="ticket-value" id="t-act"></div>
           </div>
-          <div class="ticket-img-container">
-            <img src="photo.jpeg" class="final-img" alt="我們的相片">
+          <div class="ticket-wrapper ticket-img-container">
+            <img src="photo.jpeg" class="final-img" alt="Our Photo">
           </div>
         </div>
       </div>
     </div>
 
-    <button class="primary download-btn" onclick="downloadTicket()">保存票券 📥</button>
+    <button class="primary download-btn" onclick="downloadTicket()">Save Ticket 📥</button>
   </div>
 </div>
 
-<button id="noBtn">不願意 🙈</button>
+<button id="noBtn">No way 🙈</button>
 
 <script>
 let accepted = false;
@@ -546,7 +546,7 @@ function populateTimeDropdown() {
 window.addEventListener('DOMContentLoaded', populateTimeDropdown);
 
 /* TYPING EFFECT */
-const text = "願不願意和我一起出去玩嘿嘿 😈";
+const text = "Would you like to go out on a date with me? hehe 😈";
 let charIndex = 0;
 function type() {
   if (charIndex < text.length) {
@@ -580,7 +580,7 @@ function validateStep3() {
   const timeVal = document.getElementById("time").value;
 
   if (!dateVal || !timeVal) {
-    return alert("請先填寫日期與時間唷 📅");
+    return alert("Please select both a date and a time! 📅");
   }
 
   const pureTime = timeVal.split(" ")[0];
@@ -588,7 +588,7 @@ function validateStep3() {
   const currentDateTime = new Date();
 
   if (selectedDateTime < currentDateTime) {
-    return alert("我們是要搭時光機嗎嘿嘿 ✈️");
+    return alert("Are we riding a time machine? Haha! ✈️");
   }
 
   show(4);
@@ -598,8 +598,8 @@ function validateStep4() {
   const foodSelect = document.getElementById("food").value;
   const customFood = document.getElementById("customFood").value.trim();
   
-  if (!foodSelect) return alert("選一個妳想品嚐的美食吧 🍜");
-  if (foodSelect === "OTHER" && !customFood) return alert("既然選了其它，就寫下妳想吃的嘛 ✍️");
+  if (!foodSelect) return alert("Pick a delicious spot you'd like to try! 🍜");
+  if (foodSelect === "OTHER" && !customFood) return alert("Since you selected 'Something else', write down what you want to eat! ✍️");
   
   show(5);
 }
@@ -634,12 +634,11 @@ function finish() {
   const timeVal = document.getElementById("time").value;
   
   const foodSelect = document.getElementById("food").value;
-  // 優化：如果是其他，直接填寫內容，不加額外特殊貼圖，留下更多空間
   const foodVal = foodSelect === "OTHER" ? document.getElementById("customFood").value.trim() : foodSelect;
   
   const actSelect = document.getElementById("act").value;
-  if (!actSelect) return alert("挑選一個活動吧 🥰");
-  if (actSelect === "OTHER" && !document.getElementById("customAct").value.trim()) return alert("別忘了填寫想去哪唷 ✍️");
+  if (!actSelect) return alert("Pick an activity! 🥰");
+  if (actSelect === "OTHER" && !document.getElementById("customAct").value.trim()) return alert("Don't forget to fill out where you want to go! ✍️");
   const actVal = actSelect === "OTHER" ? document.getElementById("customAct").value.trim() : actSelect;
 
   const parts = timeVal.split(" ");
@@ -652,7 +651,7 @@ function finish() {
   if (displayHour === 0) displayHour = 12;
   const displayTimeText = `${displayHour.toString().padStart(2, '0')}:${m} ${period}`;
 
-  // Populate into the elegant Ticket Elements
+  // Dynamic injection into Ticket fields
   document.getElementById("t-date").innerText = dateVal;
   document.getElementById("t-time").innerText = displayTimeText;
   document.getElementById("t-food").innerText = foodVal;
@@ -666,54 +665,32 @@ function finish() {
     confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 } });
     if (Date.now() < end) requestAnimationFrame(frame);
   }());
-
-  // Send data to Google Forms background engine
-  const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfj-bSuTkmDa01o2OSRAY2LAhmvKPZGdkYXDEBaDSO2xtI1qw/formResponse";
-  const formData = new FormData();
-  formData.append("entry.234822483", dateVal); 
-  formData.append("entry.230173302", displayTimeText); 
-  formData.append("entry.1175596544", foodVal); 
-  formData.append("entry.1429888953", actVal);  
-
-  fetch(formURL, {
-    method: "POST",
-    mode: "no-cors", 
-    body: formData
-  })
-  .then(() => { console.log("Data successfully sent to Google Form!"); })
-  .catch((error) => { console.error("Error sending data:", error); });
 }
 
-/* ========================================================
-    📸 CONVERT TICKET DOM TO DOWNLOADABLE PNG FILE ENGINE
-======================================================== */
+/* CONVERT TICKET DOM TO DOWNLOADABLE PNG FILE */
 function downloadTicket() {
   const ticket = document.getElementById("dateTicket");
   
-  // Use html2canvas to take a precise high-res snapshot of the ticket card element
   html2canvas(ticket, {
-    scale: 3, // 高清放大，確保長文字換行後在手機上依然銳利清晰
+    scale: 3, 
     backgroundColor: null, 
     useCORS: true 
   }).then(canvas => {
     const imageURI = canvas.toDataURL("image/png");
     
-    // Create custom click trigger to download the picture automatically
     const createLink = document.createElement("a");
-    createLink.download = `芸芸專屬約會通行證-${document.getElementById("t-date").innerText}.png`;
+    createLink.download = `Charlotte-Exclusive-Date-Pass-${document.getElementById("t-date").innerText}.png`;
     createLink.href = imageURI;
     document.body.appendChild(createLink);
     createLink.click();
     document.body.removeChild(createLink);
   }).catch(err => {
-    alert("保存圖片失敗，可以手動截圖保存唷 ❤️");
+    alert("Failed to save image, you can take a screenshot instead! ❤️");
     console.error(err);
   });
 }
 
-/* ========================================================
-    ⚡ PERFECTED LONG-DISTANCE FAST PHYSICS ENGINE
-======================================================== */
+/* LONG-DISTANCE FAST PHYSICS ENGINE */
 const btn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const btnGroup = document.querySelector(".btn-group");
@@ -862,11 +839,11 @@ requestAnimationFrame(updatePhysics);
 window.addEventListener("resize", () => { updateHomePosition(); });
 
 const noAlerts = [
-  "誒？不准點這個啦 😤",
-  "再給你一次機會，重新選一遍 🥺",
-  "我的字典裡沒有不願意這個選項喔 📖",
-  "好啦別鬧了，快點隔壁的『願意』嘛～ 👉👈",
-  "哼，不管你點幾次，你注定是要跟我出去玩的了 🤪❤️"
+  "Hey! You aren't allowed to click this 😤",
+  "Giving you one more chance... reconsider your choice 🥺",
+  "There is no 'No' option in my dictionary! 📖",
+  "Stop playing around, quickly hit that 'Yes' button right next to me! 👉👈",
+  "Hmph! No matter how many times you try, you are destined to go out with me 🤪❤️"
 ];
 let alertIndex = 0;
 
