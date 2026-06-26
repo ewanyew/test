@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XX ❤️</title>
+<title>BLANK ❤️</title>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -72,11 +72,22 @@ body {
   z-index: 10;
 }
 
-/* SPECIAL ADJUSTMENT FOR TICKETING PAGE */
+/* 方案 A 防禦性優化：通行證頁面允許滾動，避免內容長時按鈕被擠出 */
 #p6 {
   max-height: 90vh;
   overflow-y: auto;
   padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 隱藏捲軸但保有功能（讓卡片看起來更像獨立 App） */
+#p6::-webkit-scrollbar {
+  width: 4px;
+}
+#p6::-webkit-scrollbar-thumb {
+  background: rgba(255, 79, 155, 0.2);
+  border-radius: 10px;
 }
 
 /* TYPOGRAPHY */
@@ -292,7 +303,7 @@ button {
 }
 
 /* ========================================================
-   🎟️ EXCLUSIVE TICKETING DESIGN SYSTEM (P6)
+    🎟️ EXCLUSIVE TICKETING DESIGN SYSTEM (P6)
 ======================================================== */
 .ticket-wrapper {
   padding: 4px;
@@ -351,17 +362,23 @@ button {
   align-items: center;
   gap: 4px;
 }
+
+/* 方案 A 核心修正：允許內容文字自動彈性換行，防止超長中英文撐爆通行證 */
 .ticket-value {
   font-size: 1.05rem;
   color: #33272c;
   font-weight: 700;
+  white-space: pre-wrap;       /* 保持空格換行 */
+  word-break: break-all;       /* 遇到長字串強制換行 */
+  line-height: 1.4;
+  margin-top: 2px;
 }
 
-/* FIXED IMAGE CONTAINER: Gives container a fixed height and centers the image using Flexbox */
+/* FIXED IMAGE CONTAINER */
 .ticket-img-container {
   width: 100%;
   height: 180px;
-  margin-top: 5px;
+  margin-top: 15px;
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid #ffeef7;
@@ -371,7 +388,6 @@ button {
   background: #ffffff;
 }
 
-/* PERFECTED DOUBLE-AUTO IMAGE STYLING: Enforces real aspect ratio and leaves white space if ratios don't match */
 .final-img {
   width: auto !important;
   height: auto !important;
@@ -386,7 +402,7 @@ button {
   position: absolute;
   width: 20px;
   height: 20px;
-  background: #ffd5eb; /* Blends back nicely with container bg */
+  background: #ffd5eb; /* 與網頁底色自然融合 */
   border-radius: 50%;
   top: 62px; 
   z-index: 5;
@@ -414,7 +430,7 @@ button {
 
 <div class="container">
   <div class="page active" id="p1">
-    <h1>XX 🫶</h1>
+    <h1>BLANK 🫶</h1>
     <p class="desc" id="typing"></p>
     <div class="btn-group">
       <button class="primary" id="yesBtn" onclick="start()">願意 ❤️</button>
@@ -424,12 +440,12 @@ button {
 
   <div class="page" id="p2">
     <h1>🫣 什麽？！</h1>
-    <p class="desc">哇哇哇 XX答應我了 好害羞 😳</p>
+    <p class="desc">哇哇哇 BLANK答應我了 好害羞 😳</p>
     <button class="primary" onclick="show(3)">下一步 🥰</button>
   </div>
 
   <div class="page" id="p3">
-    <h1>📅 XX幾時得空呢？</h1>
+    <h1>📅 BLANK幾時得空呢？</h1>
     <div class="datetime-wrapper">
       <input type="date" id="date" required>
       <select id="time">
@@ -440,14 +456,11 @@ button {
   </div>
 
   <div class="page" id="p4">
-    <h1>🍜 XX想吃什麼呢？</h1>
+    <h1>🍜 BLANK想吃什麼呢？</h1>
     <select id="food" onchange="toggleCustomInput('food', 'customFood')">
-      <option value="">請選擇專屬美食...</option>
+      <option value="">請選擇專專屬美食...</option>
       <option value="🍣 日本餐">日本餐 🍣</option>
-      <option value="🍔 麥當勞">麥當勞 🍔</option>
       <option value="🍲 海底撈">海底撈 🍲</option>
-      <option value="🥗 素食">素食 🥗</option>
-      <option value="🍨 甜品店">甜品店 🍨</option>
       <option value="OTHER">其它... 📝</option>
     </select>
     <input type="text" id="customFood" class="custom-input" placeholder="想吃什麼呢？ 😋">
@@ -455,14 +468,11 @@ button {
   </div>
 
   <div class="page" id="p5">
-    <h1>🥰 芸芸飯後想去哪呢？</h1>
+    <h1>🥰 BLANK飯後想去哪呢？</h1>
     <select id="act" onchange="toggleCustomInput('act', 'customAct')">
       <option value="">請選擇浪漫行程...</option>
       <option value="🎬 看電影">看電影 🎬</option>
       <option value="🌳 散散步">散散步 🌳</option>
-      <option value="🏎️ 卡丁車">卡丁車 🏎️</option>
-      <option value="⛳ 高爾夫">高爾夫 ⛳</option>
-      <option value="🎡 遊樂園">遊樂園 🎡</option>
       <option value="OTHER">其它... 📝</option>
     </select>
     <input type="text" id="customAct" class="custom-input" placeholder="想去哪裡玩？ 🚀">
@@ -481,19 +491,19 @@ button {
         <div class="ticket-body">
           <div class="ticket-field">
             <div class="ticket-label">📅 DATE / 日期</div>
-            <div class="ticket-value" id="t-date">2026-06-26</div>
+            <div class="ticket-value" id="t-date"></div>
           </div>
           <div class="ticket-field">
             <div class="ticket-label">⏰ TIME / 時間</div>
-            <div class="ticket-value" id="t-time">07:30 PM</div>
+            <div class="ticket-value" id="t-time"></div>
           </div>
           <div class="ticket-field">
             <div class="ticket-label">🍜 DINING / 餐廳</div>
-            <div class="ticket-value" id="t-food">OMAKASE 🍣</div>
+            <div class="ticket-value" id="t-food"></div>
           </div>
           <div class="ticket-field">
             <div class="ticket-label">✨ ACTIVITY / 行程</div>
-            <div class="ticket-value" id="t-act">浪漫看電影 🎬</div>
+            <div class="ticket-value" id="t-act"></div>
           </div>
           <div class="ticket-img-container">
             <img src="photo.jpeg" class="final-img" alt="我們的相片">
@@ -624,12 +634,13 @@ function finish() {
   const timeVal = document.getElementById("time").value;
   
   const foodSelect = document.getElementById("food").value;
-  const foodVal = foodSelect === "OTHER" ? `✍️ ${document.getElementById("customFood").value.trim()}` : foodSelect;
+  // 優化：如果是其他，直接填寫內容，不加額外特殊貼圖，留下更多空間
+  const foodVal = foodSelect === "OTHER" ? document.getElementById("customFood").value.trim() : foodSelect;
   
   const actSelect = document.getElementById("act").value;
   if (!actSelect) return alert("挑選一個活動吧 🥰");
   if (actSelect === "OTHER" && !document.getElementById("customAct").value.trim()) return alert("別忘了填寫想去哪唷 ✍️");
-  const actVal = actSelect === "OTHER" ? `✍️ ${document.getElementById("customAct").value.trim()}` : actSelect;
+  const actVal = actSelect === "OTHER" ? document.getElementById("customAct").value.trim() : actSelect;
 
   const parts = timeVal.split(" ");
   const rawTime = parts[0]; 
@@ -674,22 +685,22 @@ function finish() {
 }
 
 /* ========================================================
-   📸 CONVERT TICKET DOM TO DOWNLOADABLE PNG FILE ENGINE
+    📸 CONVERT TICKET DOM TO DOWNLOADABLE PNG FILE ENGINE
 ======================================================== */
 function downloadTicket() {
   const ticket = document.getElementById("dateTicket");
   
   // Use html2canvas to take a precise high-res snapshot of the ticket card element
   html2canvas(ticket, {
-    scale: 3, // Upscale image to make text crisp and sharp on sharing
-    backgroundColor: null, // Clear alpha channel background
-    useCORS: true // Ensures custom images inside ticket load perfectly
+    scale: 3, // 高清放大，確保長文字換行後在手機上依然銳利清晰
+    backgroundColor: null, 
+    useCORS: true 
   }).then(canvas => {
     const imageURI = canvas.toDataURL("image/png");
     
     // Create custom click trigger to download the picture automatically
     const createLink = document.createElement("a");
-    createLink.download = `專屬約會通行證-${document.getElementById("t-date").innerText}.png`;
+    createLink.download = `芸芸專屬約會通行證-${document.getElementById("t-date").innerText}.png`;
     createLink.href = imageURI;
     document.body.appendChild(createLink);
     createLink.click();
@@ -701,7 +712,7 @@ function downloadTicket() {
 }
 
 /* ========================================================
-   ⚡ PERFECTED LONG-DISTANCE FAST PHYSICS ENGINE
+    ⚡ PERFECTED LONG-DISTANCE FAST PHYSICS ENGINE
 ======================================================== */
 const btn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
