@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>芸芸 ❤️</title>
+<title>傑哥 ❤️</title>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -231,7 +231,7 @@ button, #noBtn {
   height: 50px !important;       
   width: 140px !important;       
   padding: 0 !important;
-  border-radius: 20px !important; /* 已修正：恢復精美圓角 */
+  border-radius: 20px !important;
   font-size: 16px !important;
   font-weight: 700 !important;
   text-align: center !important;
@@ -265,20 +265,20 @@ button {
   will-change: left, top;
 }
 
-/* 保存按鈕樣式：寬度、高度、圓角均與其他按鈕完全對齊一致 */
+/* 保存按鈕樣式 */
 .download-btn {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   box-sizing: border-box !important;
-  height: 50px !important;          /* 完美對齊 50px 高度 */
-  width: 140px !important;          /* 完美對齊 140px 寬度 */
+  height: 50px !important;          
+  width: 140px !important;          
   line-height: 50px !important;     
   padding: 0 !important;
-  border-radius: 20px !important;   /* 完美對齊 20px 圓角 */
+  border-radius: 20px !important;   
   font-size: 16px !important;       
   font-weight: 700 !important;
-  margin: 20px auto 0 auto !important; /* 置中對齊 */
+  margin: 20px auto 0 auto !important; 
   background: #4a3e43 !important;
   color: white !important;
   box-shadow: 0 8px 20px rgba(74, 62, 67, 0.2);
@@ -437,7 +437,7 @@ button {
 
 <div class="container">
   <div class="page active" id="p1">
-    <h1>芸芸 🫶</h1>
+    <h1>傑哥 🫶</h1>
     <p class="desc" id="typing"></p>
     <div class="btn-group">
       <button class="primary" id="yesBtn" onclick="start()">願意 ❤️</button>
@@ -447,12 +447,12 @@ button {
 
   <div class="page" id="p2">
     <h1>🫣 什麽？！</h1>
-    <p class="desc">哇哇哇 芸芸答應我了 好害羞 😳</p>
+    <p class="desc">哇哇哇 傑哥答應我了 好害羞 😳</p>
     <button class="primary" onclick="show(3)">下一步 🥰</button>
   </div>
 
   <div class="page" id="p3">
-    <h1>📅 芸芸幾時得空呢？</h1>
+    <h1>📅 傑哥幾時得空呢？</h1>
     <div class="datetime-wrapper">
       <input type="date" id="date" required>
       <select id="time">
@@ -463,14 +463,14 @@ button {
   </div>
 
   <div class="page" id="p4">
-    <h1>🍜 芸芸想吃什麼呢？</h1>
+    <h1>🍜 傑哥想吃什麼呢？</h1>
     <select id="food" onchange="toggleCustomInput('food', 'customFood')">
       <option value="">請選擇專屬美食...</option>
-      <option value="🍣 OMAKASE 哈哈哈">OMAKASE 哈哈哈 🍣</option>
+      <option value="🍣 OMAKASE">OMAKASE 🍣</option>
       <option value="🍔 麥當當">麥當當 🍔</option>
       <option value="🍲 海底撈">海底撈 🍲</option>
-      <option value="🥗 c:ontent grain bowl">c:ontent grain bowl 🥗</option>
-      <option value="🍨 本宮的茶">本宮的茶 🍨</option>
+      <option value="🍜 拉麵">拉麵 🍜</option>
+      <option value="🍨 甜品">甜品 🍨</option>
       <option value="OTHER">其它... 📝</option>
     </select>
     <input type="text" id="customFood" class="custom-input" placeholder="想吃什麼呢？ 😋">
@@ -478,12 +478,12 @@ button {
   </div>
 
   <div class="page" id="p5">
-    <h1>🥰 芸芸飯後想去哪呢？</h1>
+    <h1>🥰 傑哥飯後想去哪呢？</h1>
     <select id="act" onchange="toggleCustomInput('act', 'customAct')">
       <option value="">請選擇浪漫行程...</option>
       <option value="🎬 浪漫看電影">浪漫看電影 🎬</option>
-      <option value="🌳 牽著手悠閒地散散步">牽手散散步 🌳</option>
-      <option value="🏎️ 刺激卡丁車">刺激卡丁車 🏎️</option>
+      <option value="🌳 牽手散散步">牽手散散步 🌳</option>
+      <option value="💅 美容院嘿嘿">美容院嘿嘿 💅</option>
       <option value="⛳ 打高爾夫球">打高爾夫球 ⛳</option>
       <option value="🎡 去遊樂園玩">去遊樂園玩 🎡</option>
       <option value="OTHER">其它... 📝</option>
@@ -493,8 +493,8 @@ button {
   </div>
 
   <div class="page" id="p6">
-    <h1>預約成功 ❤️ 要去載芸芸了</h1>
-    
+    <h1>預約成功 ❤️ 要去載傑哥了</h1>
+     
     <div class="ticket-wrapper">
       <div class="ticket-card" id="dateTicket">
         <div class="ticket-header">
@@ -680,7 +680,7 @@ function finish() {
   }());
 
   // Send data to Google Forms background engine
-  const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfoIb2sh6R9BD7J2PUuVppgyMVdZN6GDZCmGhXltNO9wbcQJQ/formResponse";
+  const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfn6SyqWqRN6a5ycT_m_QmyHtk_9ulVCyJDqytzcYiJT-m1Pg/formResponse";
   const formData = new FormData();
   formData.append("entry.234822483", dateVal); 
   formData.append("entry.230173302", displayTimeText); 
@@ -708,7 +708,7 @@ function downloadTicket() {
     const imageURI = canvas.toDataURL("image/png");
     
     const createLink = document.createElement("a");
-    createLink.download = `芸芸的專屬約會通行證-${document.getElementById("t-date").innerText}.png`;
+    createLink.download = `傑哥的專屬約會通行證-${document.getElementById("t-date").innerText}.png`;
     createLink.href = imageURI;
     document.body.appendChild(createLink);
     createLink.click();
