@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XXX ❤️</title>
+<title>芸芸 ❤️</title>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -21,7 +21,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif;
 }
 
 body {
@@ -72,7 +72,7 @@ body {
   z-index: 10;
 }
 
-/* Scroll handling for final card */
+/* 通行證頁面允許滾動，避免內容長時按鈕被擠出 */
 #p6 {
   max-height: 90vh;
   overflow-y: auto;
@@ -81,6 +81,7 @@ body {
   flex-direction: column;
 }
 
+/* 隱藏捲軸但保有功能（讓卡片看起來更像獨立 App） */
 #p6::-webkit-scrollbar {
   width: 4px;
 }
@@ -171,7 +172,7 @@ input[type="date"] {
 }
 
 input[type="date"]::before {
-  content: "Please select a date 📅";
+  content: "請選擇日期 📅";
   position: absolute;
   left: 18px;
   top: 0;
@@ -230,7 +231,7 @@ button, #noBtn {
   height: 50px !important;       
   width: 140px !important;       
   padding: 0 !important;
-  border-radius: 20px !important;
+  border-radius: 20px !important; /* 已修正：恢復精美圓角 */
   font-size: 16px !important;
   font-weight: 700 !important;
   text-align: center !important;
@@ -264,19 +265,20 @@ button {
   will-change: left, top;
 }
 
+/* 保存按鈕樣式：寬度、高度、圓角均與其他按鈕完全對齊一致 */
 .download-btn {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   box-sizing: border-box !important;
-  height: 50px !important;          
-  width: 160px !important; /* Expanded slightly for English text balance */
+  height: 50px !important;          /* 完美對齊 50px 高度 */
+  width: 140px !important;          /* 完美對齊 140px 寬度 */
   line-height: 50px !important;     
   padding: 0 !important;
-  border-radius: 20px !important;   
+  border-radius: 20px !important;   /* 完美對齊 20px 圓角 */
   font-size: 16px !important;       
   font-weight: 700 !important;
-  margin: 20px auto 0 auto !important; 
+  margin: 20px auto 0 auto !important; /* 置中對齊 */
   background: #4a3e43 !important;
   color: white !important;
   box-shadow: 0 8px 20px rgba(74, 62, 67, 0.2);
@@ -393,6 +395,7 @@ button {
   min-height: 1.4em; 
 }
 
+/* FIXED IMAGE CONTAINER */
 .ticket-img-container {
   width: 100%;
   height: 180px;
@@ -434,99 +437,99 @@ button {
 
 <div class="container">
   <div class="page active" id="p1">
-    <h1>XXX 🫶</h1>
+    <h1>芸芸 🫶</h1>
     <p class="desc" id="typing"></p>
     <div class="btn-group">
-      <button class="primary" id="yesBtn" onclick="start()">Yes I do ❤️</button>
+      <button class="primary" id="yesBtn" onclick="start()">願意 ❤️</button>
       <div style="width: 140px;" id="noPlaceholder"></div> 
     </div>
   </div>
 
   <div class="page" id="p2">
-    <h1>🫣 Oh My Gosh!</h1>
-    <p class="desc">Wow, XXX said yes! I'm so blushing right now 😳</p>
-    <button class="primary" onclick="show(3)">Next 🥰</button>
+    <h1>🫣 什麽？！</h1>
+    <p class="desc">哇哇哇 芸芸答應我了 好害羞 😳</p>
+    <button class="primary" onclick="show(3)">下一步 🥰</button>
   </div>
 
   <div class="page" id="p3">
-    <h1>📅 When are you free, XXX?</h1>
+    <h1>📅 芸芸幾時得空呢？</h1>
     <div class="datetime-wrapper">
       <input type="date" id="date" required>
       <select id="time">
-        <option value="">Please choose a pick-up time...</option>
+        <option value="">請選擇出發時間...</option>
       </select>
     </div>
-    <button class="primary" onclick="validateStep3()">Next 🥰</button>
+    <button class="primary" onclick="validateStep3()">下一步 🥰</button>
   </div>
 
   <div class="page" id="p4">
-    <h1>🍜 What would you like to eat?</h1>
+    <h1>🍜 芸芸想吃什麼呢？</h1>
     <select id="food" onchange="toggleCustomInput('food', 'customFood')">
-      <option value="">Choose an exclusive cuisine...</option>
-      <option value="🍣 OMAKASE haha!">OMAKASE haha! 🍣</option>
-      <option value="🍔 McDonald's">McDonald's 🍔</option>
-      <option value="🍲 Haidilao Hotpot">Haidilao Hotpot 🍲</option>
+      <option value="">請選擇專屬美食...</option>
+      <option value="🍣 OMAKASE 哈哈哈">OMAKASE 哈哈哈 🍣</option>
+      <option value="🍔 麥當當">麥當當 🍔</option>
+      <option value="🍲 海底撈">海底撈 🍲</option>
       <option value="🥗 c:ontent grain bowl">c:ontent grain bowl 🥗</option>
-      <option value="🍨 Bengong's Tea">Bengong's Tea 🍨</option>
-      <option value="OTHER">Something else... 📝</option>
+      <option value="🍨 本宮的茶">本宮的茶 🍨</option>
+      <option value="OTHER">其它... 📝</option>
     </select>
-    <input type="text" id="customFood" class="custom-input" placeholder="What are you craving? 😋">
-    <button class="primary" onclick="validateStep4()">Next 🥰</button>
+    <input type="text" id="customFood" class="custom-input" placeholder="想吃什麼呢？ 😋">
+    <button class="primary" onclick="validateStep4()">下一步 🥰</button>
   </div>
 
   <div class="page" id="p5">
-    <h1>🥰 Where should we go after?</h1>
+    <h1>🥰 芸芸飯後想去哪呢？</h1>
     <select id="act" onchange="toggleCustomInput('act', 'customAct')">
-      <option value="">Choose a romantic activity...</option>
-      <option value="🎬 Romantic Movie Night">Romantic Movie Night 🎬</option>
-      <option value="🌳 A peaceful walk holding hands">Peaceful Walk Holding Hands 🌳</option>
-      <option value="🏎️ Exciting Go-Karting">Exciting Go-Karting 🏎️</option>
-      <option value="⛳ Play some Golf">Play some Golf ⛳</option>
-      <option value="🎡 Have fun at the Amusement Park">Amusement Park 🎡</option>
-      <option value="OTHER">Something else... 📝</option>
+      <option value="">請選擇浪漫行程...</option>
+      <option value="🎬 浪漫看電影">浪漫看電影 🎬</option>
+      <option value="🌳 牽著手悠閒地散散步">牽手散散步 🌳</option>
+      <option value="🏎️ 刺激卡丁車">刺激卡丁車 🏎️</option>
+      <option value="⛳ 打高爾夫球">打高爾夫球 ⛳</option>
+      <option value="🎡 去遊樂園玩">去遊樂園玩 🎡</option>
+      <option value="OTHER">其它... 📝</option>
     </select>
-    <input type="text" id="customAct" class="custom-input" placeholder="Where do you want to play? 🚀">
-    <button class="primary" onclick="finish()">Finish 🥰</button>
+    <input type="text" id="customAct" class="custom-input" placeholder="想去哪裡玩？ 🚀">
+    <button class="primary" onclick="finish()">完成 🥰</button>
   </div>
 
   <div class="page" id="p6">
-    <h1>Booking Confirmed ❤️ On my way to pick up XXX</h1>
+    <h1>預約成功 ❤️ 要去載芸芸了</h1>
     
     <div class="ticket-wrapper">
       <div class="ticket-card" id="dateTicket">
         <div class="ticket-header">
-          <h2>Exclusive Date Pass</h2>
+          <h2>專屬約會通行證</h2>
           <p>🫶 EXCLUSIVE DATE PASS 🫶</p>
         </div>
         <div class="ticket-body">
           <div class="ticket-field">
-            <div class="ticket-label">📅 DATE</div>
+            <div class="ticket-label">📅 DATE / 日期</div>
             <div class="ticket-value" id="t-date"></div>
           </div>
           <div class="ticket-field">
-            <div class="ticket-label">⏰ TIME</div>
+            <div class="ticket-label">⏰ TIME / 時間</div>
             <div class="ticket-value" id="t-time"></div>
           </div>
           <div class="ticket-field">
-            <div class="ticket-label">🍜 DINING / RESTAURANT</div>
+            <div class="ticket-label">🍜 DINING / 餐廳</div>
             <div class="ticket-value" id="t-food"></div>
           </div>
           <div class="ticket-field">
-            <div class="ticket-label">✨ ACTIVITY / ITINERARY</div>
+            <div class="ticket-label">✨ ACTIVITY / 行程</div>
             <div class="ticket-value" id="t-act"></div>
           </div>
           <div class="ticket-img-container">
-            <img src="photo.jpeg" class="final-img" alt="Our Photo">
+            <img src="photo.jpeg" class="final-img" alt="我們的相片">
           </div>
         </div>
       </div>
     </div>
 
-    <button class="primary download-btn" onclick="downloadTicket()">Save Date Pass 📥</button>
+    <button class="primary download-btn" onclick="downloadTicket()">保存通行證 📥</button>
   </div>
 </div>
 
-<button id="noBtn">No way 🙈</button>
+<button id="noBtn">不願意 🙈</button>
 
 <script>
 let accepted = false;
@@ -556,7 +559,7 @@ function populateTimeDropdown() {
 window.addEventListener('DOMContentLoaded', populateTimeDropdown);
 
 /* TYPING EFFECT */
-const text = "Would you like to go out on a date with me? hehe 😈";
+const text = "願不願意和我一起出去玩嘿嘿 😈";
 let charIndex = 0;
 function type() {
   if (charIndex < text.length) {
@@ -590,7 +593,7 @@ function validateStep3() {
   const timeVal = document.getElementById("time").value;
 
   if (!dateVal || !timeVal) {
-    return alert("Please select a date and time first! 📅");
+    return alert("請先填寫日期與時間唷 📅");
   }
 
   const pureTime = timeVal.split(" ")[0];
@@ -598,7 +601,7 @@ function validateStep3() {
   const currentDateTime = new Date();
 
   if (selectedDateTime < currentDateTime) {
-    return alert("Are we traveling back in time? haha ✈️");
+    return alert("我們是要搭時光機嗎嘿嘿 ✈️");
   }
 
   show(4);
@@ -608,8 +611,8 @@ function validateStep4() {
   const foodSelect = document.getElementById("food").value;
   const customFood = document.getElementById("customFood").value.trim();
   
-  if (!foodSelect) return alert("Please select something you'd like to eat! 🍜");
-  if (foodSelect === "OTHER" && !customFood) return alert("Since you selected 'Other', let me know what you want to eat! ✍️");
+  if (!foodSelect) return alert("選一個妳想品嚐的美食吧 🍜");
+  if (foodSelect === "OTHER" && !customFood) return alert("既然選了其它，就寫下妳想吃的嘛 ✍️");
   
   show(5);
 }
@@ -647,8 +650,8 @@ function finish() {
   const foodVal = foodSelect === "OTHER" ? document.getElementById("customFood").value.trim() : foodSelect;
   
   const actSelect = document.getElementById("act").value;
-  if (!actSelect) return alert("Please pick an activity! 🥰");
-  if (actSelect === "OTHER" && !document.getElementById("customAct").value.trim()) return alert("Don't forget to write down where you want to go! ✍️");
+  if (!actSelect) return alert("挑選一個活動吧 🥰");
+  if (actSelect === "OTHER" && !document.getElementById("customAct").value.trim()) return alert("別忘了填寫想去哪唷 ✍️");
   const actVal = actSelect === "OTHER" ? document.getElementById("customAct").value.trim() : actSelect;
 
   const parts = timeVal.split(" ");
@@ -676,7 +679,21 @@ function finish() {
     if (Date.now() < end) requestAnimationFrame(frame);
   }());
 
-  // Google Forms engine section has been entirely removed as requested.
+  // Send data to Google Forms background engine
+  const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSfoIb2sh6R9BD7J2PUuVppgyMVdZN6GDZCmGhXltNO9wbcQJQ/formResponse";
+  const formData = new FormData();
+  formData.append("entry.234822483", dateVal); 
+  formData.append("entry.230173302", displayTimeText); 
+  formData.append("entry.1175596544", foodVal); 
+  formData.append("entry.1429888953", actVal);  
+
+  fetch(formURL, {
+    method: "POST",
+    mode: "no-cors", 
+    body: formData
+  })
+  .then(() => { console.log("Data successfully sent to Google Form!"); })
+  .catch((error) => { console.error("Error sending data:", error); });
 }
 
 /* CONVERT TICKET DOM TO DOWNLOADABLE PNG FILE */
@@ -691,13 +708,13 @@ function downloadTicket() {
     const imageURI = canvas.toDataURL("image/png");
     
     const createLink = document.createElement("a");
-    createLink.download = `Exclusive-Date-Pass-For-XXX-${document.getElementById("t-date").innerText}.png`;
+    createLink.download = `芸芸的專屬約會通行證-${document.getElementById("t-date").innerText}.png`;
     createLink.href = imageURI;
     document.body.appendChild(createLink);
     createLink.click();
     document.body.removeChild(createLink);
   }).catch(err => {
-    alert("Failed to save the image, but you can manually take a screenshot to save it! ❤️");
+    alert("保存圖片失敗，可以手動截圖保存唷 ❤️");
     console.error(err);
   });
 }
@@ -851,11 +868,11 @@ requestAnimationFrame(updatePhysics);
 window.addEventListener("resize", () => { updateHomePosition(); });
 
 const noAlerts = [
-  "Hey! Clicking this button is not allowed 😤",
-  "I'll give you another chance, choose again 🥺",
-  "There is no option for 'No' in my dictionary 📖",
-  "Alright stop playing around, click 'Yes I do' right next to me~ 👉👈",
-  "Hmph, no matter how many times you try, you are destined to go out with me anyway 🤪❤️"
+  "誒？不准點這個啦 😤",
+  "再給你一次機會，重新選一遍 🥺",
+  "我的字典裡沒有不願意這個選項喔 📖",
+  "好啦別鬧了，快點隔壁的『願意』嘛～ 👉👈",
+  "哼，不管你點幾次，你注定是要跟我出去玩的了 🤪❤️"
 ];
 let alertIndex = 0;
 
